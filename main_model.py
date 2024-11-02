@@ -79,21 +79,22 @@ def run_recognition() -> None:
         #----------WYŚWIETLANIE OKNA Z OBRAZEM Z KAMERY I WYNIKAMI-----------
         #---Zakomentować ten fragment aby nie wyświetlać wyników-------------
 
-        #     mp_drawing.draw_landmarks(frame, hand_landmarks, mp.solutions.hands.HAND_CONNECTIONS)
-        #     cv2.putText(frame, f'Gest: {predicted_label}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
-        #                 1, (0, 255, 0), 2, cv2.LINE_AA)
-        # else:
-        #     cv2.putText(frame, 'Nie wykryto dloni', (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
-        #                 1, (0, 0, 255), 2, cv2.LINE_AA)
-        #
-        # cv2.imshow('Rozpoznawanie gestow', frame)
-        # if cv2.waitKey(1) & 0xFF == 27:  # 'ESC', aby wyjść
-        #     break
+            mp_drawing.draw_landmarks(frame, hand_landmarks, mp.solutions.hands.HAND_CONNECTIONS)
+            cv2.putText(frame, f'Gest: {predicted_label}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
+                        1, (0, 255, 0), 2, cv2.LINE_AA)
+        else:
+            cv2.putText(frame, 'Nie wykryto dloni', (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
+                        1, (0, 0, 255), 2, cv2.LINE_AA)
+            predicted_label = "Nie wykryto dloni"
+
+        cv2.imshow('Rozpoznawanie gestow', frame)
+        if cv2.waitKey(1) & 0xFF == 27:  # 'ESC', aby wyjść
+            break
         #---------------------------------------------------------------------
 
         #---ZAKOMENTOWAC PRZY WYSWIETLANIU WYNIKOW
-        else:
-            predicted_label = "Nie wykryto dloni"
+        # else:
+        #     predicted_label = "Nie wykryto dloni"
 
         #---Wypisywanie wyniku w konsoli---
         # print(predicted_label)
